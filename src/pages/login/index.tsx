@@ -8,13 +8,22 @@ import { Form,NeoInc, TextForm,ClickedText } from './styles'
 import Logo from '../../assets/images/neologo.png'
 
 const Login: React.FC = () => {
-  const [user, setUser] = useState('neotradingbr@gmail');
+  const [user, setUser] = useState('neotradingbr@gmail.com');
   const [password, setPassword] = useState('Neoinc20$');
   console.log(user)
 
   async function handleGetUser(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
-    const response = await api.get(`login.json?email=${user}.com&password=${password}$`);
+    const response = await api.get(`login.json?email=elvis@yahoo.com&password=letsboogie`, {
+      withCredentials: true,
+      headers: {
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Authorization',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE' ,
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    });
     console.log(response.data)
 
   }
