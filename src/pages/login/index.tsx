@@ -3,8 +3,6 @@ import Grid from '@material-ui/core/Grid';
 
 import api from '../../services/api'
 
-import { MyfxbookApi } from 'myfxbook-api-client';
-
 import { Form,NeoInc, TextForm,ClickedText } from './styles'
 
 import Logo from '../../assets/images/neologo.png'
@@ -16,7 +14,6 @@ const Login: React.FC = () => {
 
   async function handleGetUser(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
-    const client = new MyfxbookApi({ email: user, password: password });
     const response = await api.get(`login.json?email=${user}.com&password=${password}$`);
     console.log(response.data)
 
@@ -26,7 +23,7 @@ const Login: React.FC = () => {
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={12} md={4}>
           <NeoInc >
-            <img width='80%' src={Logo} />
+            <img width='80%' src={Logo}  alt="logo"/>
           </NeoInc>
           <Form onSubmit={handleGetUser}>
             <TextForm>Login</TextForm>
